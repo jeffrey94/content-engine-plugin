@@ -1,0 +1,111 @@
+{
+  "name": "Article Quality Checklist",
+  "version": "1.0",
+  "required_elements": {
+    "hook": {
+      "description": "Opening must include specific, surprising fact (not generic)",
+      "validation": "Check first 2 paragraphs for local currency value, percentage, or specific data point",
+      "bad_example": "Cash flow is important for SMEs",
+      "good_example": "[Target audience] wait an average of X days for payment, tying up [currency][amount] in working capital (use real data from research)"
+    },
+    "statistics": {
+      "minimum_count": 3,
+      "description": "Must include at least 3 statistics with local currency values or percentages",
+      "validation": "Search for local currency values (from config/project.json), percentages, or numerical data points with sources"
+    },
+    "government_programs": {
+      "minimum_count": 1,
+      "description": "Must name at least one government program, initiative, or agency",
+      "examples": "See config/project.json regulatory.agencies for configured government programs",
+      "validation": "Check for specific program names, not generic mentions of 'government support'"
+    },
+    "industry_focus": {
+      "description": "Must target specific industries, not generic 'SMEs'",
+      "valid_industries": [
+        "Manufacturing",
+        "Construction",
+        "Logistics",
+        "F&B",
+        "Retail",
+        "E-commerce",
+        "Agriculture",
+        "Healthcare",
+        "Technology",
+        "Wholesale/Distribution"
+      ],
+      "validation": "Article should mention specific industry at least 3 times"
+    },
+    "actionable_steps": {
+      "description": "Must include concrete next steps with portals, registrations, or timelines",
+      "validation": "Look for: URLs, registration portals, application processes, deadlines",
+      "bad_example": "Consider applying for funding",
+      "good_example": "Register at [government portal URL] by [deadline] to qualify"
+    },
+    "local_context": {
+      "description": "Must use local market context throughout (see config/project.json for market details)",
+      "required_elements": [
+        "Local currency values (not USD or generic currency)",
+        "Local agencies and regulatory bodies",
+        "Local regulations and compliance",
+        "Local examples where possible"
+      ]
+    },
+    "links": {
+      "internal_links": {
+        "minimum": 2,
+        "description": "Link to other brand content (see config/project.json for business URL)"
+      },
+      "external_links": {
+        "minimum": 1,
+        "description": "Link to authoritative sources (government sites, official reports). Valid domains loaded from config/project.json."
+      }
+    },
+    "cta": {
+      "description": "Soft CTA connecting article topic to brand services (see config/project.json for CTA details)",
+      "tone": "Helpful, not salesy",
+      "placement": "End of article, after actionable steps",
+      "good_example": "While implementing e-invoicing, cash flow gaps may still occur during transition. Invoice financing can bridge the gap while you wait for customer payments."
+    }
+  },
+  "tone_guidelines": {
+    "voice": "Expert but accessible",
+    "style": "Friendly but professional",
+    "approach": "Helpful, not salesy",
+    "language": "Conversational, not corporate",
+    "avoid": [
+      "Generic platitudes",
+      "Overly promotional language",
+      "Technical jargon without explanation",
+      "Passive voice",
+      "Vague statements without data"
+    ]
+  },
+  "seo_requirements": {
+    "title": {
+      "max_length": 60,
+      "must_include": "Primary keyword"
+    },
+    "meta_description": {
+      "min_length": 150,
+      "max_length": 160,
+      "must_include": "Primary keyword and call-to-action"
+    },
+    "keyword_placement": {
+      "title": true,
+      "first_paragraph": true,
+      "h2_headers": "At least one H2",
+      "natural_distribution": "Throughout article, not stuffed"
+    },
+    "structure": {
+      "h1": 1,
+      "h2": "3-5",
+      "h3": "As needed for subsections",
+      "paragraphs": "2-4 sentences max"
+    }
+  },
+  "word_count": {
+    "minimum": 1200,
+    "target": 1500,
+    "maximum": 1800
+  }
+}

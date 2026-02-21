@@ -1,0 +1,9 @@
+{
+  "name": "content-engine",
+  "version": "0.1.0",
+  "description": "AI-powered content marketing pipeline for creating SEO-optimized blog articles. Research trending topics, create content briefs, write articles, validate quality, and analyze competitors — all through slash commands.",
+  "author": {
+    "name": "Jeffrey Chung"
+  },
+  "keywords": ["content-marketing", "seo", "blog", "writing", "research", "content-pipeline"]
+}

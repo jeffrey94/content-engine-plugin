@@ -1,0 +1,144 @@
+{
+  "project_id": "acme-fintech",
+  "version": "1.0",
+  "setup_complete": true,
+
+  "business": {
+    "name": "Acme Financial Solutions",
+    "short_name": "Acme",
+    "description": "Digital lending platform providing working capital loans and invoice financing to small and medium enterprises",
+    "website": "https://acmefinance.example.com",
+    "blog_url": "https://acmefinance.example.com/blog",
+    "services": [
+      "Invoice financing",
+      "Working capital loans",
+      "Business term loans",
+      "Supply chain financing"
+    ],
+    "value_proposition": "Fast, flexible financing for growing businesses — approved in 24 hours with competitive rates"
+  },
+
+  "market": {
+    "country": "Malaysia",
+    "country_code": "MY",
+    "currency": "RM",
+    "currency_name": "Malaysian Ringgit",
+    "language": "en",
+    "google_domain": "google.com.my",
+    "google_gl": "my",
+    "google_hl": "en",
+    "local_modifiers": ["Kuala Lumpur", "Selangor", "Johor", "Penang", "Malaysia"],
+    "government_domains": [".gov.my"],
+    "trusted_news_domains": ["thestar.com.my", "nst.com.my", "freemalaysiatoday.com", "theedgemarkets.com"]
+  },
+
+  "audience": {
+    "primary_label": "Malaysian SMEs",
+    "description": "Small and medium enterprises in Malaysia seeking financing and navigating government compliance",
+    "revenue_range": "RM500,000 - RM50 million annual revenue",
+    "industries": [
+      "Manufacturing",
+      "Food & Beverage",
+      "Retail & E-commerce",
+      "Wholesale & Distribution",
+      "Construction"
+    ],
+    "pain_points": [
+      "Cash flow gaps from late-paying customers",
+      "Complex government compliance requirements",
+      "Limited access to affordable financing",
+      "Navigating e-invoicing mandates",
+      "Understanding available government grants"
+    ],
+    "job_titles": ["Business Owner", "Finance Manager", "CFO", "Managing Director"]
+  },
+
+  "content": {
+    "business_objective": "Increase qualified organic traffic by 30% in 6 months through SEO-optimized content",
+    "content_split": {
+      "government": "50%",
+      "market": "50%"
+    },
+    "articles_per_month": "2-4",
+    "word_count": {
+      "tier1_min": 1200,
+      "tier1_max": 1800,
+      "tier1_target": 1500,
+      "tier2_min": 1000,
+      "tier2_max": 1500,
+      "tier2_target": 1200
+    },
+    "quality_thresholds": {
+      "tier1_pass": 13,
+      "tier1_total": 15,
+      "tier2_pass": 10,
+      "tier2_total": 12
+    }
+  },
+
+  "tone": {
+    "voice": "Expert but accessible",
+    "style": "Friendly but professional",
+    "approach": "Helpful, not salesy",
+    "rules": [
+      "Always use RM (Malaysian Ringgit), never USD or generic currency",
+      "Reference Malaysian agencies and regulations by official name",
+      "Use active voice throughout",
+      "Address reader directly (you/your)",
+      "Short paragraphs (2-3 sentences max)"
+    ]
+  },
+
+  "cta": {
+    "style": "soft",
+    "placement": "End of article, after actionable steps",
+    "company_mention": "Acme Financial Solutions",
+    "typical_angles": [
+      "Cash flow gaps during compliance transition? Invoice financing bridges the gap.",
+      "Growing faster than your working capital allows? Flexible financing can help."
+    ]
+  },
+
+  "regulatory": {
+    "agencies": [
+      {"name": "LHDN", "full_name": "Lembaga Hasil Dalam Negeri (Inland Revenue Board)", "url": "https://www.hasil.gov.my", "focus": "Tax compliance, e-invoicing"},
+      {"name": "BNM", "full_name": "Bank Negara Malaysia", "url": "https://www.bnm.gov.my", "focus": "Monetary policy, SME financing schemes"},
+      {"name": "SME Corp", "full_name": "SME Corporation Malaysia", "url": "https://www.smecorp.gov.my", "focus": "SME development, grants, programs"},
+      {"name": "MATRADE", "full_name": "Malaysia External Trade Development Corporation", "url": "https://www.matrade.gov.my", "focus": "Export support, market development"}
+    ],
+    "known_programs": ["MyInvois", "Skim Pembiayaan Perniagaan", "SME Digitisation Grant"],
+    "compliance_topics": ["E-invoicing mandate", "SST compliance", "Company tax filing"]
+  },
+
+  "research_sources": {
+    "front_pages": [
+      {"name": "The Star", "url": "https://www.thestar.com.my", "focus": "General news, policy announcements"},
+      {"name": "New Straits Times", "url": "https://www.nst.com.my", "focus": "Government news, economic policy"}
+    ],
+    "business_sections": [
+      {"name": "The Edge Markets", "url": "https://www.theedgemarkets.com", "focus": "Business, finance, markets"}
+    ],
+    "macro_economic": [
+      {"name": "BNM Statistics", "url": "https://www.bnm.gov.my/statistics", "focus": "Economic indicators, financing data"},
+      {"name": "DOSM", "url": "https://www.dosm.gov.my", "focus": "GDP, trade, employment statistics"}
+    ],
+    "industry_associations": [
+      {"name": "SME Association", "full_name": "SME Association of Malaysia", "url": "https://www.smeam.org.my", "focus": "SME advocacy, industry data"}
+    ],
+    "platform_sources": [],
+    "research_firms": [],
+    "search_keywords": {
+      "base": ["SME Malaysia", "small business Malaysia", "enterprise Malaysia"],
+      "financing": ["SME loan Malaysia", "business financing Malaysia", "invoice financing"],
+      "compliance": ["e-invoicing Malaysia", "SST Malaysia", "company tax Malaysia"],
+      "industry": ["manufacturing Malaysia", "F&B business Malaysia", "retail Malaysia"]
+    }
+  },
+
+  "visual_identity": {
+    "preset_prefix": "standard",
+    "descriptors": ["trustworthy", "modern", "accessible"],
+    "avoid": ["aggressive", "luxury"],
+    "cultural_notes": "Respect Malaysian multicultural context — avoid imagery exclusive to one ethnic group"
+  }
+}

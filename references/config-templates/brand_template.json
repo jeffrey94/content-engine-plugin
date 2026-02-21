@@ -1,0 +1,55 @@
+{
+  "brand_id": "brand-name",
+  "brand_name": "Brand Display Name",
+  "version": "1.0",
+  "palette": {
+    "primary": {
+      "hex": "#000000",
+      "name": "Primary Color Name",
+      "usage": "Main headings, primary CTAs, dominant visual elements"
+    },
+    "secondary": {
+      "hex": "#000000",
+      "name": "Secondary Color Name",
+      "usage": "Supporting elements, secondary headings, backgrounds"
+    },
+    "accent": {
+      "hex": "#000000",
+      "name": "Accent Color Name",
+      "usage": "Highlights, callout elements, small decorative touches"
+    },
+    "background": {
+      "light": "#FFFFFF",
+      "dark": "#1A1A1A",
+      "usage": "Image backgrounds, text backing areas"
+    },
+    "text": {
+      "on_light": "#1A1A1A",
+      "on_dark": "#FFFFFF",
+      "muted": "#666666"
+    },
+    "extended": [
+      {
+        "hex": "#000000",
+        "name": "Extended Color 1",
+        "usage": "Charts, decorative elements, secondary accents"
+      }
+    ]
+  },
+  "typography": {
+    "heading_font": "Font Name",
+    "body_font": "Font Name",
+    "display_font": "Font Name",
+    "fallback": "sans-serif"
+  },
+  "logo": {
+    "placement_preference": "top-left",
+    "min_clear_space": "2x logo height",
+    "usage_on_images": "Optional. Include only on social cards, not cover heroes."
+  },
+  "visual_identity": {
+    "descriptors": ["modern", "trustworthy", "approachable"],
+    "avoid": ["aggressive", "luxury", "playful"],
+    "cultural_notes": "Notes about cultural sensitivity for this brand's market"
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "content_pillars": [
+    {
+      "id": "pillar_1",
+      "name": "Nutrition & Healthy Eating",
+      "description": "MOH dietary guidelines, macronutrient education, Malaysian food myths, nutrition data, and evidence-based healthy eating advice for Malaysian consumers",
+      "content_split": {
+        "government": "40%",
+        "market": "60%"
+      },
+      "target_audience": "Health-curious Malaysians who want to understand nutrition better — from gym beginners to experienced fitness enthusiasts looking for science-backed info",
+      "example_topics": [
+        "How much protein do Malaysians actually need per day? (MOH guidelines vs gym bro science)",
+        "Malaysian Dietary Guidelines 2024 explained: What Suku Suku Separuh really means for your plate",
+        "Calories in your favourite mamak dishes — and healthier swaps you'll actually enjoy",
+        "The truth about 'zero sugar' labels in Malaysia: What FSQD regulations actually require",
+        "Why Malaysian obesity rates hit 54.4% — and what the NHMS data tells us about our diet",
+        "Complete guide to reading nutrition labels on Malaysian food products",
+        "Protein myths busted: Do you really need a protein shake after every workout?",
+        "How hormones and antibiotics in chicken affect your health — what the science says"
+      ],
+      "keywords": [
+        "nutrition Malaysia",
+        "healthy eating Malaysia",
+        "protein intake Malaysia",
+        "Malaysian dietary guidelines",
+        "calories Malaysian food",
+        "macros guide Malaysia",
+        "nutrition facts Malaysia",
+        "healthy diet plan Malaysia"
+      ],
+      "typical_cta": "Now that you know your daily protein needs, the hard part is actually hitting them consistently. Diet Chicken meals have exact macros on every pack — so you always know what you're getting, no calorie-counting app needed.",
+      "topic_cluster": {
+        "pillar_article": null,
+        "supporting_topics": [],
+        "cluster_strength": "weak"
+      },
+      "funnel_coverage": {
+        "awareness": [],
+        "consideration": [],
+        "decision": [],
+        "gap": "all stages need content"
+      }
+    },
+    {
+      "id": "pillar_2",
+      "name": "Meal Prep & Fitness Lifestyle",
+      "description": "Practical meal planning for Malaysian fitness enthusiasts and busy professionals — weekly meal prep guides, gym nutrition, cost comparisons vs eating out, and protein goal strategies",
+      "content_split": {
+        "government": "10%",
+        "market": "90%"
+      },
+      "target_audience": "Busy Malaysian professionals and gym-goers who struggle to eat healthy consistently due to time constraints, and want practical meal prep solutions",
+      "example_topics": [
+        "Weekly meal prep for Malaysian gym-goers: RM15/meal vs RM25 at healthy cafes",
+        "How to hit 150g protein daily on a Malaysian budget (without eating plain chicken breast)",
+        "The busy KL professional's guide to eating healthy when you work 10-hour days",
+        "Meal prep vs GrabFood: Real cost comparison for a week of healthy eating in Malaysia",
+        "Building muscle on Malaysian food: Complete bulking meal plan with local ingredients",
+        "Cutting season meal plan Malaysia: How to lose fat without giving up nasi lemak forever",
+        "5 high-protein Malaysian breakfast ideas that take less than 10 minutes",
+        "How to meal prep chicken breast 5 ways so you never get bored (Malaysian flavours edition)"
+      ],
+      "keywords": [
+        "meal prep Malaysia",
+        "high protein meals Malaysia",
+        "fitness meal plan Malaysia",
+        "healthy meal delivery Malaysia",
+        "gym diet Malaysia",
+        "protein meals cheap Malaysia",
+        "weekly meal prep guide",
+        "bodybuilding diet Malaysia"
+      ],
+      "typical_cta": "If meal prep still feels like too much work on a Sunday night, Diet Chicken's ready-to-eat packs reheat in 3 minutes — same clean macros, zero cooking required.",
+      "topic_cluster": {
+        "pillar_article": null,
+        "supporting_topics": [],
+        "cluster_strength": "weak"
+      },
+      "funnel_coverage": {
+        "awareness": [],
+        "consideration": [],
+        "decision": [],
+        "gap": "all stages need content"
+      }
+    },
+    {
+      "id": "pillar_3",
+      "name": "Healthy Malaysian Living",
+      "description": "Culturally relevant health content tied to Malaysian life — Ramadan nutrition, CNY healthy eating, hawker food survival guides, mamak alternatives, and festive season health tips",
+      "content_split": {
+        "government": "30%",
+        "market": "70%"
+      },
+      "target_audience": "All Malaysians who love local food culture but want to make healthier choices — especially during festive seasons, when eating out, and when navigating hawker stalls",
+      "example_topics": [
+        "Ramadan nutrition guide: How to sahur and iftar without gaining weight",
+        "CNY reunion dinner survival guide: Enjoy the feast, keep your macros in check",
+        "Hawker food health guide: The best and worst choices at Malaysian food courts",
+        "The mamak survival guide: How to eat at mamak stalls without destroying your diet",
+        "Hari Raya cookie season: How many kuih raya is too many? (We did the math)",
+        "Healthy Deepavali: Traditional Indian sweets ranked by calories and sugar content",
+        "Is nasi lemak actually bad for you? The real nutrition breakdown might surprise you",
+        "How to order healthy at Malaysian chain restaurants (Secret Menu hacks)"
+      ],
+      "keywords": [
+        "healthy Malaysian food",
+        "Ramadan nutrition guide",
+        "healthy hawker food Malaysia",
+        "low calorie Malaysian food",
+        "healthy nasi lemak",
+        "mamak healthy options",
+        "festive eating Malaysia",
+        "healthy food culture Malaysia"
+      ],
+      "typical_cta": "Enjoying Malaysian food is part of who we are — but on the days you need a quick, clean meal between celebrations, Diet Chicken has your back with ready-to-eat options that taste like home cooking.",
+      "topic_cluster": {
+        "pillar_article": null,
+        "supporting_topics": [],
+        "cluster_strength": "weak"
+      },
+      "funnel_coverage": {
+        "awareness": [],
+        "consideration": [],
+        "decision": [],
+        "gap": "all stages need content"
+      }
+    },
+    {
+      "id": "pillar_4",
+      "name": "Food Quality & Transparency",
+      "description": "Food label education, halal certification processes, hormone-free and antibiotic-free claims, FSQD regulations, and building consumer trust through food transparency",
+      "content_split": {
+        "government": "50%",
+        "market": "50%"
+      },
+      "target_audience": "Informed Malaysian consumers who care about what goes into their food — parents checking labels, fitness enthusiasts verifying protein claims, and health-conscious shoppers who want transparency",
+      "example_topics": [
+        "How to read Malaysian food labels: What manufacturers don't want you to notice",
+        "Halal certification in Malaysia: What JAKIM's logo actually guarantees about your food",
+        "Hormone-free chicken in Malaysia: Marketing hype or real health benefit?",
+        "What 'no preservatives' really means under Malaysian food regulations",
+        "FSQD food safety standards: How Malaysia regulates your ready-to-eat meals",
+        "The truth about 'healthy' labels on Malaysian packaged food — KPDNHEP rules explained",
+        "Antibiotic-free poultry: Why it matters and how Malaysian farms are changing",
+        "Pineapple-fed chicken vs regular chicken: What the nutrition difference actually looks like"
+      ],
+      "keywords": [
+        "food labels Malaysia",
+        "halal certification Malaysia",
+        "hormone free chicken Malaysia",
+        "food safety Malaysia",
+        "JAKIM halal",
+        "food regulations Malaysia",
+        "antibiotic free food Malaysia",
+        "clean label food Malaysia"
+      ],
+      "typical_cta": "At Diet Chicken, we believe you deserve to know exactly what's in your food. Every pack shows full nutrition facts, and our chicken is pineapple-fed, hormone-free, and antibiotic-free — because transparency isn't optional.",
+      "topic_cluster": {
+        "pillar_article": null,
+        "supporting_topics": [],
+        "cluster_strength": "weak"
+      },
+      "funnel_coverage": {
+        "awareness": [],
+        "consideration": [],
+        "decision": [],
+        "gap": "all stages need content"
+      }
+    }
+  ],
+  "target_business_sizes": {
+    "primary": "Middle-to-upper income Malaysian consumers (RM4,000-RM15,000/month household income)",
+    "industries": [
+      "Fitness & Gym",
+      "Corporate & Office Workers",
+      "Healthcare & Medical",
+      "Sports & Athletics",
+      "Weight Management & Dieting",
+      "Bodybuilding & Strength Training"
+    ]
+  },
+  "content_differentiation": {
+    "requirements": [
+      "Specific data (RM values, calorie counts, protein grams, Malaysian health statistics)",
+      "Named programs (MOH dietary guidelines, Suku Suku Separuh, NHMS data, JAKIM standards)",
+      "Audience focus (target specific consumer segments — gym-goers, busy professionals, meal preppers)",
+      "Actionable steps (exact meal plans, portion sizes, shopping lists, macros calculations)",
+      "Local context (Malaysian food comparisons, local ingredients, RM pricing, hawker stall references)"
+    ],
+    "avoid": [
+      "Generic health advice that could apply to any country",
+      "Tips without specific nutritional data or RM values",
+      "Vague 'eat healthy' suggestions without Malaysian food context",
+      "Content that shames Malaysian food culture or eating habits",
+      "Overly clinical or medical-sounding nutrition advice"
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "backend": "prompt-only",
+  "backends": {
+    "prompt-only": {
+      "description": "Save prompt markdown files only. No image generation API called.",
+      "enabled": true,
+      "output": "prompts-only"
+    },
+    "claude": {
+      "description": "Use Claude's built-in image generation",
+      "enabled": false,
+      "model": "claude-opus-4-6",
+      "max_images_per_run": 10,
+      "output_format": "png"
+    },
+    "gemini": {
+      "description": "Use Google Gemini image generation",
+      "enabled": false,
+      "api_key_env": "GEMINI_API_KEY",
+      "model": "gemini-2.0-flash-exp",
+      "output_format": "png"
+    },
+    "dall-e": {
+      "description": "Use OpenAI DALL-E image generation",
+      "enabled": false,
+      "api_key_env": "OPENAI_API_KEY",
+      "model": "dall-e-3",
+      "size_mapping": {
+        "cover-hero": "1792x1024",
+        "facebook-card": "1792x1024",
+        "instagram-card": "1024x1024"
+      },
+      "output_format": "png"
+    },
+    "stable-diffusion": {
+      "description": "Use Stability AI image generation",
+      "enabled": false,
+      "api_key_env": "STABILITY_API_KEY",
+      "model": "stable-diffusion-xl-1024-v1-0",
+      "output_format": "png"
+    }
+  },
+  "fallback_behavior": "If selected backend fails or API key is missing, fall back to prompt-only mode and notify user.",
+  "output_directory_pattern": "data/images/YYYYMMDD/{article-slug}/"
+}

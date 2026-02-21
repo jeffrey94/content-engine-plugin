@@ -1,0 +1,14 @@
+{
+  "SessionStart": [
+    {
+      "matcher": "",
+      "hooks": [
+        {
+          "type": "prompt",
+          "prompt": "Read config/project.json in the user's project folder. Check the 'project_id' and 'setup_complete' fields.\n\nIf project_id is 'UNCONFIGURED' or setup_complete is false:\n- Tell the user: 'Welcome to Content Engine! It looks like this is your first time. Let me help you set up your brand and content strategy.'\n- Then run the /setup-brand command to start onboarding.\n\nIf setup_complete is true:\n- Read the business name and content pillars.\n- Give a brief greeting: 'Welcome back, [business name]. Your content engine is ready. Use /research, /write, /brief, /review, or /analyze-competitors to get started.'\n\nIf config/project.json does not exist:\n- Tell the user: 'No configuration found. Run /setup-brand to get started.'\n\nKeep the greeting concise — 2-3 sentences max.",
+          "timeout": 30
+        }
+      ]
+    }
+  ]
+}

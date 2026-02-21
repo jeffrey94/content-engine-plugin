@@ -1,0 +1,134 @@
+{
+  "project_id": "UNCONFIGURED",
+  "version": "1.0",
+  "setup_complete": false,
+
+  "business": {
+    "name": "Your Business Name",
+    "short_name": "Your Brand",
+    "description": "Brief description of what your business does",
+    "website": "https://yourbusiness.com",
+    "blog_url": "https://yourbusiness.com/blog",
+    "services": [
+      "Service 1",
+      "Service 2",
+      "Service 3"
+    ],
+    "value_proposition": "Your unique value proposition"
+  },
+
+  "market": {
+    "country": "Your Country",
+    "country_code": "XX",
+    "currency": "$",
+    "currency_name": "Your Currency",
+    "language": "en",
+    "google_domain": "google.com",
+    "google_gl": "us",
+    "google_hl": "en",
+    "local_modifiers": ["Your City", "Your Region", "Your Country"],
+    "government_domains": [".gov"],
+    "trusted_news_domains": ["example-news.com"]
+  },
+
+  "audience": {
+    "primary_label": "Your Target Audience",
+    "description": "Who you are writing for",
+    "revenue_range": "Revenue range of your target customers",
+    "industries": [
+      "Industry 1",
+      "Industry 2",
+      "Industry 3"
+    ],
+    "pain_points": [
+      "Pain point 1",
+      "Pain point 2",
+      "Pain point 3"
+    ],
+    "job_titles": ["Decision-makers you target"]
+  },
+
+  "content": {
+    "business_objective": "Your content marketing goal (e.g., Increase qualified organic traffic by 30% in 6 months)",
+    "content_split": {
+      "government": "50%",
+      "market": "50%"
+    },
+    "articles_per_month": "2-4",
+    "word_count": {
+      "tier1_min": 1200,
+      "tier1_max": 1800,
+      "tier1_target": 1500,
+      "tier2_min": 1000,
+      "tier2_max": 1500,
+      "tier2_target": 1200
+    },
+    "quality_thresholds": {
+      "tier1_pass": 13,
+      "tier1_total": 15,
+      "tier2_pass": 10,
+      "tier2_total": 12
+    }
+  },
+
+  "tone": {
+    "voice": "Expert but accessible",
+    "style": "Friendly but professional",
+    "approach": "Helpful, not salesy",
+    "rules": [
+      "Always use local currency (never USD or generic currency)",
+      "Reference local agencies and regulations",
+      "Use active voice throughout",
+      "Address reader directly (you/your)",
+      "Short paragraphs (2-3 sentences max)"
+    ]
+  },
+
+  "cta": {
+    "style": "soft",
+    "placement": "End of article, after actionable steps",
+    "company_mention": "Your Brand",
+    "typical_angles": [
+      "How your product/service helps with this topic",
+      "Natural connection to your offering"
+    ]
+  },
+
+  "regulatory": {
+    "agencies": [
+      {"name": "Agency Abbreviation", "full_name": "Full Agency Name", "url": "https://agency.gov", "focus": "What they regulate"}
+    ],
+    "known_programs": ["Program 1", "Program 2"],
+    "compliance_topics": ["Topic 1", "Topic 2"]
+  },
+
+  "research_sources": {
+    "front_pages": [
+      {"name": "News Source 1", "url": "https://news-source.com", "focus": "What they cover"}
+    ],
+    "business_sections": [
+      {"name": "Business News 1", "url": "https://news-source.com/business"}
+    ],
+    "macro_economic": [
+      {"name": "Economic Data Source", "url": "https://data-source.gov", "focus": "Economic indicators"}
+    ],
+    "industry_associations": [
+      {"name": "Industry Body", "full_name": "Full Name", "url": "https://industry-body.org", "focus": "Industry data"}
+    ],
+    "platform_sources": [],
+    "research_firms": [],
+    "search_keywords": {
+      "base": ["your industry keywords"],
+      "financing": ["your financing keywords"],
+      "compliance": ["your compliance keywords"],
+      "industry": ["your industry-specific keywords"]
+    }
+  },
+
+  "visual_identity": {
+    "preset_prefix": "standard",
+    "descriptors": ["trustworthy", "modern", "accessible"],
+    "avoid": ["aggressive", "luxury"],
+    "cultural_notes": "Any cultural considerations for your audience"
+  }
+}

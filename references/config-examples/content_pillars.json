@@ -1,0 +1,75 @@
+{
+  "content_pillars": [
+    {
+      "name": "Policy & Compliance",
+      "description": "Government regulations, tax changes, e-invoicing mandates, and compliance deadlines affecting SMEs",
+      "content_split": {"government": "90%", "market": "10%"},
+      "target_audience": "SME owners and finance managers navigating regulatory changes",
+      "example_topics": [
+        "E-invoicing mandate deadlines and registration guide",
+        "Company tax filing changes for the current year",
+        "SST compliance updates for SMEs",
+        "New government grants and eligibility requirements"
+      ],
+      "keywords": ["e-invoicing Malaysia", "SME compliance", "company tax Malaysia", "government grants SME"],
+      "typical_cta": "Navigating compliance while managing cash flow? Invoice financing can bridge the gap during transition periods."
+    },
+    {
+      "name": "Funding & Financing",
+      "description": "Financing options, government schemes, bank loans, and alternative funding for business growth",
+      "content_split": {"government": "60%", "market": "40%"},
+      "target_audience": "SME owners seeking capital for growth, working capital, or specific projects",
+      "example_topics": [
+        "Government SME financing schemes comparison",
+        "Invoice financing vs bank overdraft for cash flow",
+        "How to improve your business credit score",
+        "Alternative financing options for Malaysian SMEs"
+      ],
+      "keywords": ["SME loan Malaysia", "business financing", "invoice financing Malaysia", "working capital loan"],
+      "typical_cta": "Need fast, flexible financing? Acme provides approval in 24 hours with competitive rates."
+    },
+    {
+      "name": "Industry Opportunities",
+      "description": "Market trends, sector growth, new opportunities, and industry analysis for SME decision-makers",
+      "content_split": {"government": "30%", "market": "70%"},
+      "target_audience": "Business owners looking for growth opportunities and market intelligence",
+      "example_topics": [
+        "Data center boom and opportunities for SME suppliers",
+        "Export trends and MATRADE support programs",
+        "E-commerce growth and logistics opportunities",
+        "Manufacturing sector outlook and government incentives"
+      ],
+      "keywords": ["SME opportunities Malaysia", "business growth Malaysia", "export Malaysia SME", "industry trends"],
+      "typical_cta": "Growing faster than your working capital allows? Flexible financing helps you seize opportunities."
+    },
+    {
+      "name": "Practical Guides",
+      "description": "Step-by-step how-to guides, tool comparisons, and operational best practices for running an SME",
+      "content_split": {"government": "20%", "market": "80%"},
+      "target_audience": "SME owners and managers looking for actionable operational advice",
+      "example_topics": [
+        "Choosing accounting software for e-invoicing compliance",
+        "Sole proprietor vs Sdn Bhd tax comparison",
+        "Cash flow management guide for seasonal businesses",
+        "Setting up your business for government tender eligibility"
+      ],
+      "keywords": ["SME guide Malaysia", "accounting software Malaysia", "business registration", "cash flow management"],
+      "typical_cta": "Focus on running your business while we handle the financing. Apply in minutes, approved in 24 hours."
+    }
+  ],
+  "target_industries": ["Manufacturing", "Food & Beverage", "Retail & E-commerce", "Wholesale & Distribution", "Construction"],
+  "content_differentiation": {
+    "specific_data": "RM values, percentages, named statistics with sources",
+    "named_programs": "Official government program names, agency names, portal URLs",
+    "audience_focus": "Specific industries and business sizes, not generic SMEs",
+    "actionable_steps": "URLs, registration processes, deadlines, required documents",
+    "local_context": "Malaysian regulations, RM currency, local agencies, market-specific examples"
+  },
+  "avoid": [
+    "Generic business advice applicable to any country",
+    "Tips without data or RM values",
+    "Vague 'improve your business' suggestions",
+    "International examples without local context",
+    "Overly promotional content"
+  ]
+}

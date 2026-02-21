@@ -1,0 +1,99 @@
+{
+  "primary_keywords": {
+    "high_priority": [
+      {
+        "keyword": "your main keyword 1",
+        "search_volume": "high",
+        "competition": "medium",
+        "relevance": "direct"
+      },
+      {
+        "keyword": "your main keyword 2",
+        "search_volume": "medium",
+        "competition": "low",
+        "relevance": "direct"
+      }
+    ],
+    "topic_based": [
+      {
+        "keyword": "topic keyword 1",
+        "search_volume": "medium",
+        "competition": "low",
+        "relevance": "pillar_1"
+      },
+      {
+        "keyword": "topic keyword 2",
+        "search_volume": "medium",
+        "competition": "medium",
+        "relevance": "pillar_2"
+      }
+    ]
+  },
+  "secondary_keywords": [
+    "secondary keyword 1",
+    "secondary keyword 2",
+    "secondary keyword 3"
+  ],
+  "long_tail_keywords": [
+    "how to [action] in [your market]",
+    "best [your service] for [your audience]",
+    "[your topic] guide for [your audience]"
+  ],
+  "local_modifiers": [
+    "Your Country",
+    "Your City",
+    "Your Region"
+  ],
+  "industry_modifiers": [
+    "industry 1",
+    "industry 2",
+    "industry 3"
+  ],
+  "intent_keywords": {
+    "informational": [
+      "what is",
+      "how to",
+      "guide to",
+      "understanding",
+      "explained"
+    ],
+    "commercial": [
+      "best",
+      "top",
+      "vs",
+      "comparison",
+      "options"
+    ],
+    "transactional": [
+      "apply",
+      "get",
+      "register",
+      "sign up",
+      "buy"
+    ]
+  },
+  "competitor_keywords": {
+    "note": "Keywords competitors rank for that you should target",
+    "keywords": [
+      "competitor keyword 1",
+      "competitor keyword 2"
+    ]
+  },
+
+  "serp_features": {
+    "note": "Track SERP feature opportunities per keyword. Auto-populated by Research Agent Step 2.5 during pipeline runs. Manual entries also supported.",
+    "tracked_keywords": []
+  },
+
+  "funnel_mapping": {
+    "note": "Map keywords to buyer journey stages for coverage tracking. Auto-populated by Research Agent Step 4e. Used to ensure content covers all funnel stages.",
+    "awareness": [],
+    "consideration": [],
+    "decision": []
+  },
+
+  "topic_clusters": {
+    "note": "Track pillar-supporting content relationships for topical authority. Auto-populated by Research Agent Step 4h. Helps build internal linking strategy.",
+    "clusters": []
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "serpapi": {
+      "type": "http",
+      "url": "https://mcp.serpapi.com/${SERPAPI_API_KEY}/mcp"
+    }
+  }
+}

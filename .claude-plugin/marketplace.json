@@ -1,0 +1,19 @@
+{
+  "name": "content-engine-marketplace",
+  "metadata": {
+    "description": "AI-powered content marketing pipeline for Claude Code",
+    "version": "1.0.0"
+  },
+  "owner": {
+    "name": "Jeffrey Chung",
+    "github": "jeffrey94"
+  },
+  "plugins": [
+    {
+      "name": "content-engine",
+      "source": ".",
+      "description": "AI-powered content marketing pipeline for creating SEO-optimized blog articles. Research trending topics, create content briefs, write articles, validate quality, and analyze competitors — all through slash commands.",
+      "version": "0.1.0"
+    }
+  ]
+}
