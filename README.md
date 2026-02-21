@@ -13,8 +13,6 @@ A universal content marketing system that adapts to any business. Configure your
 - **`/analyze-competitors [keyword]`** — Compare your article against top Google results
 - **`/setup-brand`** — Guided setup for your business, audience, and content strategy
 
-**Typical cost**: ~$5.80 per article | **Time**: 30-45 minutes end-to-end
-
 ## Getting Started
 
 ### 1. Install the Plugin
