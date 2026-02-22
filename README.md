@@ -141,3 +141,7 @@ Key checks include: data-driven hooks, 3+ statistics with local currency, action
 See `CONNECTORS.md` for information on swapping SerpAPI for a different search provider.
 
 See `references/config-examples/` for a complete example configuration.
+
+## Credits
+
+Visual generation skills inspired by [baoyu-skills](https://github.com/JimLiu/baoyu-skills) — AI image generation, cover images, infographics, and more.
