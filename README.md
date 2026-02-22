@@ -11,6 +11,7 @@ A universal content marketing system that adapts to any business. Configure your
 - **`/write [topic]`** — Write a full 1,200-1,500 word SEO-optimized article
 - **`/review [article]`** — Validate against a 15-point quality checklist
 - **`/analyze-competitors [keyword]`** — Compare your article against top Google results
+- **`/content-visuals [article]`** — Generate image prompts and visuals with Gemini image generation
 - **`/setup-brand`** — Guided setup for your business, audience, and content strategy
 
 ## Getting Started
@@ -48,10 +49,10 @@ On first session, the plugin auto-detects that you're new and walks you through 
 |-------|---------|
 | content-style | Tone, voice, formatting standards for all blog content |
 | content-quality-checklist | 15-point (Tier 1) / 12-point (Tier 2) quality validation |
-| content-visuals | Image prompt generation with 9 art styles and brand awareness |
+| content-visuals | Image prompt and visual generation with 9 art styles, brand awareness, and Gemini API backend |
 | research-sources | Source evaluation methodology and research workflows |
 
-### Commands (6)
+### Commands (7)
 
 | Command | What It Does |
 |---------|-------------|
@@ -60,6 +61,7 @@ On first session, the plugin auto-detects that you're new and walks you through 
 | `/write [topic]` | Write a full SEO-optimized article |
 | `/review [path]` | Validate article against quality checklist |
 | `/analyze-competitors [kw]` | SERP analysis and content gap report |
+| `/content-visuals [article]` | Generate image prompts and visuals for articles |
 | `/setup-brand` | Configure brand, audience, and strategy |
 
 ### MCP Servers (1)
@@ -82,11 +84,21 @@ Sign up at [serpapi.com](https://serpapi.com) — free tier includes 100 searche
 ### Optional Environment Variables
 
 ```bash
-# For image generation (only if using an API backend)
+# For image generation (only if using the Gemini backend)
 export GEMINI_API_KEY=your_key      # Google Gemini
-export OPENAI_API_KEY=your_key      # DALL-E
-export STABILITY_API_KEY=your_key   # Stable Diffusion
 ```
+
+### Image Generation
+
+The `/content-visuals` command generates image prompts for any article. With a `GEMINI_API_KEY`, it can also generate actual images via the Gemini API:
+
+```
+/content-visuals path/to/article.md                    # prompts only (default)
+/content-visuals path/to/article.md --model flash      # generate with Gemini Flash
+/content-visuals path/to/article.md --model pro        # generate with Gemini Pro (4K)
+```
+
+Without an API key, prompts are saved to `data/images/` and can be pasted into [Google AI Studio](https://aistudio.google.com) or any image tool manually.
 
 ## Configuration Files
 

@@ -12,7 +12,7 @@ Documents the structure and fields of `config/image-generation.json`, which cont
 
 | Field | Type | Description |
 |---|---|---|
-| `backend` | string | Active backend ID. One of: `prompt-only`, `claude`, `gemini`, `dall-e`, `stable-diffusion`. |
+| `backend` | string | Active backend ID. One of: `prompt-only`, `gemini`. |
 | `backends` | object | Backend definitions. Each key is a backend ID. |
 | `fallback_behavior` | string | What to do when active backend fails. |
 | `output_directory_pattern` | string | Output path pattern with `YYYYMMDD` and `{article-slug}` placeholders. |
@@ -25,11 +25,11 @@ Each backend object under `backends` has:
 |---|---|---|---|
 | `description` | string | Yes | Human-readable description. |
 | `enabled` | boolean | Yes | Whether this backend is available for use. |
-| `api_key_env` | string | No | Environment variable name containing the API key. Not needed for `prompt-only` or `claude`. |
+| `api_key_env` | string | No | Environment variable name containing the API key. Not needed for `prompt-only`. |
 | `model` | string | No | Model identifier for API calls. |
 | `max_images_per_run` | integer | No | Rate limit guard. Default: 10. |
 | `output_format` | string | No | Image format: `png`, `webp`, `jpg`. Default: `png`. |
-| `size_mapping` | object | No | Maps image types to API-specific size strings. Used by backends that require predefined sizes (e.g., DALL-E). |
+| `models` | object | No | Model tier definitions (e.g., `flash`, `pro`) with `id`, `description`, `tier` fields. |
 | `output` | string | No | Special output mode (e.g., `prompts-only` for prompt-only backend). |
 
 ## How Backends Are Used
@@ -40,27 +40,12 @@ Each backend object under `backends` has:
 - User can manually paste prompts into any image generation tool
 - Always works, no dependencies
 
-### claude
-- Uses Claude's built-in image generation capabilities
-- No external API key needed
-- Images generated within the Claude Code session
-- Respects `max_images_per_run` limit
-
 ### gemini
-- Calls Google Gemini API for image generation
+- Calls Google Gemini API for image generation via `curl`
 - Requires `GEMINI_API_KEY` in environment
-- Uses model specified in config
-
-### dall-e
-- Calls OpenAI DALL-E API
-- Requires `OPENAI_API_KEY` in environment
-- Uses `size_mapping` to convert image types to DALL-E size parameters
-- DALL-E has fixed size options, so exact dimensions may differ from spec
-
-### stable-diffusion
-- Calls Stability AI API
-- Requires `STABILITY_API_KEY` in environment
-- Supports custom dimensions
+- Uses model specified in config (default: `gemini-2.5-flash-image`)
+- Supports `flash` and `pro` model tiers via `--model` flag
+- See `references/backends/gemini.md` for full implementation details
 
 ## Switching Backends
 

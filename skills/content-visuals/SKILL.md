@@ -22,6 +22,8 @@ Provide an article path and optional overrides:
 /content-visuals path/to/article.md --preset data-vis
 /content-visuals path/to/article.md --quick
 /content-visuals path/to/article.md --types cover,instagram
+/content-visuals path/to/article.md --model flash
+/content-visuals path/to/article.md --model pro --types cover
 ```
 
 ## Three Dimensions
@@ -107,8 +109,65 @@ Load brand colors and typography from `config/brands/_active.json` → points to
 3. **Confirm with user** (unless `--quick`) — present recommendation, wait for approval
 4. **Ask image count** — how many of each type?
 5. **Generate prompts** — assemble 4-layer prompt: type template + style rules + brand palette + article context
-6. **Generate images** (if backend configured) — call the active backend from `config/image-generation.json`
+6. **Generate images** (if backend configured) — see sub-steps below
 7. **Save output** — prompts and images to `data/images/YYYYMMDD/{article-slug}/`
+
+### Step 6: Image Generation Details
+
+#### 6a. Check Environment
+
+Determine which backend is configured in `config/image-generation.json`.
+
+**If backend is `prompt-only`:**
+Skip generation. Prompts are already saved from Step 5.
+
+**If backend is `gemini`:**
+
+1. Check if `$GEMINI_API_KEY` is set in the environment
+2. If **missing**, tell the user:
+   > "Image generation requires a Gemini API key. Your prompts have been saved to `data/images/...` — you can copy them into [Google AI Studio](https://aistudio.google.com) or any image generation tool to create your images. To enable automatic generation in Claude Code, set `GEMINI_API_KEY` in your `.env` file."
+3. If **present**, proceed to 6b
+
+**If backend is any other value:**
+Fall back to prompt-only and notify the user that the backend is not yet implemented.
+
+#### 6b. Select Model
+
+Resolve the model ID from the `--model` flag:
+- `--model flash` → `gemini-2.5-flash-image` (default if no flag)
+- `--model pro` → `gemini-3-pro-image-preview`
+
+Read model config from `config/image-generation.json` → `backends.gemini.models`.
+
+#### 6c. Generate Each Image
+
+For each prompt file saved in Step 5, follow the procedure in `references/backends/gemini.md`:
+
+1. Read the prompt markdown file (strip YAML frontmatter, use only the prompt body)
+2. Build JSON payload with `jq` → temp file
+3. Call the Gemini API via `curl`
+4. Extract base64 image data with `jq`
+5. Decode to PNG with `base64` (platform-aware decode flag)
+6. Validate file size with `wc -c`
+7. Save to `data/images/YYYYMMDD/{article-slug}/generated/{type}-{N}.png`
+8. Clean up temp files
+
+#### 6d. Handle Results
+
+**On success:**
+Report each generated image with file path and size:
+> "Generated cover-hero.png (245,832 bytes)"
+
+**On failure (per image):**
+1. Log the error in the manifest
+2. Confirm the prompt file is saved and available
+3. Suggest the user can paste the prompt into [Google AI Studio](https://aistudio.google.com) manually
+4. Continue generating remaining images — do not abort the batch
+
+**On total failure (API key invalid, all requests fail):**
+1. Confirm all prompts are saved
+2. Suggest manual generation path
+3. Update manifest with error status
 
 ## Output Structure
 
@@ -127,10 +186,7 @@ data/images/YYYYMMDD/{article-slug}/
 
 Load from `config/image-generation.json`. Available backends:
 - `prompt-only` (default) — saves prompts only, no API calls
-- `claude` — Claude's built-in image generation
 - `gemini` — Google Gemini (requires `GEMINI_API_KEY`)
-- `dall-e` — OpenAI DALL-E (requires `OPENAI_API_KEY`)
-- `stable-diffusion` — Stability AI (requires `STABILITY_API_KEY`)
 
 If the selected backend fails or the API key is missing, fall back to `prompt-only` mode.
 
@@ -146,3 +202,4 @@ Detailed specifications for each dimension:
 - `references/visual-elements.md` — universal visual rules
 - `references/workflow/*.md` — step-by-step workflow procedures
 - `references/config/*.md` — backend and preferences schemas
+- `references/backends/gemini.md` — Gemini API curl implementation reference

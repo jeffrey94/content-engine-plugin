@@ -6,37 +6,24 @@
       "enabled": true,
       "output": "prompts-only"
     },
-    "claude": {
-      "description": "Use Claude's built-in image generation",
-      "enabled": false,
-      "model": "claude-opus-4-6",
-      "max_images_per_run": 10,
-      "output_format": "png"
-    },
     "gemini": {
-      "description": "Use Google Gemini image generation",
+      "description": "Use Google Gemini image generation via API",
       "enabled": false,
       "api_key_env": "GEMINI_API_KEY",
-      "model": "gemini-2.0-flash-exp",
-      "output_format": "png"
-    },
-    "dall-e": {
-      "description": "Use OpenAI DALL-E image generation",
-      "enabled": false,
-      "api_key_env": "OPENAI_API_KEY",
-      "model": "dall-e-3",
-      "size_mapping": {
-        "cover-hero": "1792x1024",
-        "facebook-card": "1792x1024",
-        "instagram-card": "1024x1024"
+      "model": "gemini-2.5-flash-image",
+      "models": {
+        "flash": {
+          "id": "gemini-2.5-flash-image",
+          "description": "Fast drafts, batch generation. Lower latency, good quality.",
+          "tier": "default"
+        },
+        "pro": {
+          "id": "gemini-3-pro-image-preview",
+          "description": "Final assets, 4K support, advanced reasoning. Preview.",
+          "tier": "quality"
+        }
       },
-      "output_format": "png"
-    },
-    "stable-diffusion": {
-      "description": "Use Stability AI image generation",
-      "enabled": false,
-      "api_key_env": "STABILITY_API_KEY",
-      "model": "stable-diffusion-xl-1024-v1-0",
+      "max_images_per_run": 10,
       "output_format": "png"
     }
   },
