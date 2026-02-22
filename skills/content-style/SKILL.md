@@ -5,7 +5,7 @@ description: >
   the user asks to "write an article", "check content style", "apply brand voice",
   "format blog content", or needs guidance on article structure, hook writing,
   TL;DR formatting, FAQ sections, or CTA placement.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Content Style Guide

@@ -5,7 +5,7 @@ description: >
   "create images for an article", "generate blog visuals", "make a cover image",
   "create social media cards", "/content-visuals", or needs image prompts for
   cover heroes, Facebook cards, or Instagram cards matching article content.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Content Visuals

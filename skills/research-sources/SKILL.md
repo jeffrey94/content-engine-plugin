@@ -5,7 +5,7 @@ description: >
   the user asks to "research topics", "find trending news", "scan for content ideas",
   "verify sources", or needs guidance on which sources to trust, how to evaluate
   source quality, or where to find market-specific data.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Research Sources & Methodology

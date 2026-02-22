@@ -5,7 +5,7 @@ description: >
   user asks to "review an article", "check quality", "validate content",
   "run quality checklist", "score this article", or needs to verify an article
   meets publishing standards before going live.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Content Quality Checklist
