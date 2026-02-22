@@ -55,6 +55,38 @@ When selecting 2-3 topics:
 - **Maintain balance**: respect the government/market content split from config
 - **Prioritize** SERP feature opportunities and topic cluster gaps
 
+## Keyword Validation Step
+
+After selecting 2-3 topics but BEFORE writing the brief, validate the primary keyword for each selected topic. This step prevents keyword-article mismatches where the keyword's SERP landscape doesn't match the planned article's angle.
+
+### A: Resolve Candidate Keyword
+1. If research output included a `suggested_keyword` (from keyword fitness check), use it as the primary candidate
+2. Otherwise, pick the best-fit keyword from `config/seo_keywords.json` or `config/content_pillars.json` keywords
+
+### B: SERP Validation
+Search the candidate keyword (using WebSearch with market context from `config/project.json`):
+1. Examine the top 5 organic results:
+   - **Angle match**: Do 3+ results address the same angle as the planned article?
+   - **Intent match**: Is the dominant search intent (informational/commercial/transactional) aligned with the planned content type?
+   - **Competitor type**: Are results articles, encyclopedias, product pages, or tools? Does this match what we're writing?
+2. Classify the SERP fit:
+   - `strong_match`: 4-5 of top 5 results align with the article angle
+   - `partial_match`: 2-3 of top 5 results align
+   - `mismatch`: 0-1 of top 5 results align (e.g., SERP dominated by medical authority sites but we're writing a practical guide)
+
+### C: Handle Mismatches
+If SERP validation returns `partial_match` or `mismatch`:
+1. Generate 2-3 alternative keywords from:
+   - The article title's core terms (often the best keyword is hiding in the title itself)
+   - PAA questions from the research output
+   - Related searches from the research output
+2. Run the same SERP validation (Step B) on each alternative
+3. Pick the keyword with the strongest SERP fit
+4. If no keyword achieves `strong_match`, use the best `partial_match` and note the limitation
+
+### D: Document the Decision
+Record the validation result in the brief output — this makes keyword choices traceable and reviewable.
+
 ## Content Brief Output
 
 For each selected topic, create a comprehensive brief and save as JSON to `data/briefs/YYYYMMDD/brief_{topic_slug}.json`:
@@ -64,7 +96,18 @@ For each selected topic, create a comprehensive brief and save as JSON to `data/
   "brief_id": "topic-slug",
   "created_date": "YYYY-MM-DD",
   "topic": "Full article title",
-  "primary_keyword": "target keyword",
+  "primary_keyword": "validated keyword from Keyword Validation Step",
+  "keyword_validation": {
+    "original_keyword": "keyword before validation",
+    "original_source": "seo_keywords|content_pillars|research_suggested",
+    "serp_match": "strong_match|partial_match|mismatch",
+    "serp_dominant_type": "e.g., medical encyclopedias, practical guides, product pages",
+    "validated_keyword": "the keyword after validation (may be same as original)",
+    "validation_rationale": "Why this keyword was kept or changed",
+    "alternatives_considered": [
+      {"keyword": "alt keyword", "serp_match": "result", "reason": "why kept or rejected"}
+    ]
+  },
   "secondary_keywords": ["kw1", "kw2", "kw3"],
   "content_pillar": "Pillar name",
   "content_type": "government|market",

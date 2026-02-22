@@ -38,12 +38,16 @@ For each headline, answer these 4 questions:
 
 Keep only topics that pass at least 3 of 4 filters.
 
-### Step 2.5: SERP Feature & PAA Mining
+### Step 2.5: SERP Feature & PAA Mining + Keyword Evaluation
 For each surviving topic:
 - WebSearch the likely primary keyword
 - Note: Does a featured snippet exist? Who owns it?
 - Extract "People Also Ask" questions (these become FAQ candidates)
 - Note related searches (these become secondary keywords)
+- **Keyword fitness check**: Compare the primary keyword's SERP against the planned article angle.
+  - Do 3+ of the top 5 results cover the same angle as the planned article?
+  - If the SERP is dominated by a different content type (e.g., medical encyclopedias when we're writing a practical guide), flag as a potential keyword mismatch.
+  - When a mismatch is detected, check if PAA questions, related searches, or the topic title itself suggest a better-fitting keyword. If so, record it as `suggested_keyword` with `suggestion_rationale` in the output.
 
 ### Step 3: Deep-Dive Research
 For each topic that passed Step 2:
@@ -87,6 +91,10 @@ Save as JSON to `data/research/YYYYMMDD/research_YYYYMMDD_HHMMSS.json`:
       "content_angle": "Unique angle for the article",
       "seo_potential": {
         "primary_keyword": "keyword",
+        "keyword_source": "content_pillars|seo_keywords|topic_title",
+        "keyword_mismatch": false,
+        "suggested_keyword": null,
+        "suggestion_rationale": null,
         "search_intent": "informational|commercial|transactional",
         "competition": "low|medium|high",
         "serp_features": {"featured_snippet": true, "paa_questions": ["Q1", "Q2"]},
