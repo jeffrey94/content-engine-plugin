@@ -1,6 +1,6 @@
 # Content Engine
 
-AI-powered content marketing pipeline for creating SEO-optimized blog articles. Research trending topics, create content briefs, write articles, validate quality, and analyze competitors — all through slash commands in Claude Cowork.
+AI-powered content marketing pipeline for creating SEO-optimized blog articles. Research trending topics, create content briefs, write articles, validate quality, and analyze competitors all through Claude Cowork. 
 
 ## What It Does
 
