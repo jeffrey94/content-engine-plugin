@@ -130,8 +130,7 @@ data/
 ## Quality Standards
 
 Articles are validated against a dual-tier checklist:
-
-**Tier 1 (Government content)**: 15 checks, pass score 13/15 (86.7%)
+**Tier 1 (Government policy related content)**: 15 checks, pass score 13/15 (86.7%)
 **Tier 2 (Market content)**: 12 checks, pass score 10/12 (83.3%)
 
 Key checks include: data-driven hooks, 3+ statistics with local currency, actionable steps with URLs, FAQ sections, SEO optimization, and professional tone.
