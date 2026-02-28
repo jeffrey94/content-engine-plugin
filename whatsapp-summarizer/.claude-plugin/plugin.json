@@ -1,0 +1,26 @@
+{
+  "name": "whatsapp-summarizer",
+  "version": "1.0.0",
+  "description": "Transcribe WhatsApp voice messages and photos using Gemini, then summarize conversations with Claude.",
+  "author": {
+    "name": "Jeffrey Chung"
+  },
+  "keywords": ["whatsapp", "voice-messages", "transcription", "summarizer", "gemini"],
+  "commands": [
+    {
+      "name": "transcribe-chat",
+      "description": "Transcribe a WhatsApp chat export — voice messages and photos processed via Gemini",
+      "source": "commands/transcribe-chat.md"
+    },
+    {
+      "name": "clarify-chat",
+      "description": "Ask clarifying questions about a transcribed chat to build context for summarization",
+      "source": "commands/clarify-chat.md"
+    },
+    {
+      "name": "summarize-chat",
+      "description": "Generate a structured summary of a transcribed WhatsApp chat",
+      "source": "commands/summarize-chat.md"
+    }
+  ]
+}

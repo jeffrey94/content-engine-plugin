@@ -1,19 +1,21 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "content-engine-marketplace",
+  "name": "jeffrey-skills",
   "owner": {
     "name": "Jeffrey Chung"
-  },
-  "metadata": {
-    "description": "AI-powered content marketing pipeline for Claude Code",
-    "version": "1.0.0"
   },
   "plugins": [
     {
       "name": "content-engine",
-      "source": "./",
+      "source": "./content-engine",
       "description": "AI-powered content marketing pipeline for creating SEO-optimized blog articles. Research trending topics, create content briefs, write articles, validate quality, and analyze competitors — all through slash commands.",
       "version": "0.2.0"
+    },
+    {
+      "name": "whatsapp-summarizer",
+      "source": "./whatsapp-summarizer",
+      "description": "Transcribe WhatsApp voice messages and photos using Gemini, then summarize conversations with Claude. Supports date filtering, clarifying context, and structured summaries.",
+      "version": "1.0.0"
     }
   ]
 }
