@@ -5,22 +5,5 @@
   "author": {
     "name": "Jeffrey Chung"
   },
-  "keywords": ["whatsapp", "voice-messages", "transcription", "summarizer", "gemini"],
-  "commands": [
-    {
-      "name": "transcribe-chat",
-      "description": "Transcribe a WhatsApp chat export — voice messages and photos processed via Gemini",
-      "source": "commands/transcribe-chat.md"
-    },
-    {
-      "name": "clarify-chat",
-      "description": "Ask clarifying questions about a transcribed chat to build context for summarization",
-      "source": "commands/clarify-chat.md"
-    },
-    {
-      "name": "summarize-chat",
-      "description": "Generate a structured summary of a transcribed WhatsApp chat",
-      "source": "commands/summarize-chat.md"
-    }
-  ]
+  "keywords": ["whatsapp", "voice-messages", "transcription", "summarizer", "gemini"]
 }
