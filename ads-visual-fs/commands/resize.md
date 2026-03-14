@@ -17,8 +17,13 @@ Determine:
 - Source aspect ratio (from image dimensions)
 - Key elements and their positions (headline, CTA, logo, product, background)
 - Visual hierarchy and composition notes
+- **Critical elements list** — label each: logo, headline, CTA, support line, trust signals, product image, etc.
+- **Focal point summary** — one sentence describing the visual focus
+- **Exact headline text** — verbatim from the image
+- **Exact CTA text** — verbatim from the image
+- **Color palette** — hex codes observed in the image
 
-**Document composition notes** — record element positions (e.g., "logo top-left, headline center-top, CTA bottom-center") for use in Step 3.
+**Document all extracted details** — these are used verbatim in Step 3 prompts.
 
 ## Step 2 — Select Platforms
 
@@ -65,9 +70,16 @@ Wait for selection.
 
 For each selected platform, run the script via Bash with composition context:
 
+Use ratio descriptions for the prompt:
+- 9:16 → "Vertical stories/reels format"
+- 16:9 → "Wide format for YouTube/display"
+- 1:1 → "Square format for feed posts"
+- 4:3 → "Landscape format"
+- 3:4 → "Portrait format"
+
 ```bash
 ${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
-  --prompt "Adapt this marketing ad for <platform description>. Maintain all brand elements, copy, and visual hierarchy. Recompose the layout to fit the <ratio> aspect ratio naturally — do not simply crop or stretch. Ensure all text remains legible and the CTA is prominent. Composition: <composition notes from Step 1>" \
+  --prompt "Recompose this advertisement into a <ratio description> canvas. Keep all critical elements visible and readable: <critical element labels from Step 1>. Maintain original brand colours <hex palette from Step 1>. Ensure the focal point remains: <focal point summary from Step 1>. Keep the headline text intact: '<exact headline from Step 1>'. Preserve the CTA that reads '<exact CTA from Step 1>'. Do not translate or rewrite any text. Generate clean, legible typography and respect safe margins. Focus on intelligent layout changes rather than stylistic overhauls." \
   --image "./ads-output/resize/<platform-key>.png" \
   --ref "$1" \
   --ar "<aspect ratio>" \
@@ -78,7 +90,13 @@ Process platforms sequentially to avoid rate limits.
 
 **Runtime resolution**: If `bun` is installed, use `bun`. Otherwise use `npx -y bun`.
 
-**Error handling**: If a script call fails, wait 5 seconds and retry once. If it still fails, log the error and continue with remaining platforms.
+**Error handling**:
+- Rate limit (429) or service unavailable (503): wait 5 seconds, retry once
+- Content policy violation: present the error, offer to modify the prompt
+- No image data returned: retry with simplified prompt
+- Other failures: log the error and continue with remaining platforms
+
+See `${CLAUDE_PLUGIN_ROOT}/scripts/references/platform-specs.md` for detailed platform dimensions, safe zones, and platform key mapping.
 
 ## Step 4 — Review
 

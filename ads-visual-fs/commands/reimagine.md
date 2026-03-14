@@ -27,6 +27,23 @@ Present results in a structured table. Then ask:
 
 Wait for user confirmation. Do NOT proceed until the user confirms.
 
+## Step 1b — Select Mandatory Copy for Visuals
+
+Present each extracted copy element individually and ask the user to select which ones should appear in the generated visuals:
+
+- [ ] **H1 Headline**: "<extracted text>"
+- [ ] **Support Line**: "<extracted text>"
+- [ ] **CTA Label**: "<extracted text>"
+- [ ] **Trust Signals**: "<extracted text>"
+- [ ] **Legal/Disclaimer**: "<extracted text>"
+
+> **Which copy elements should appear in the generated visuals? Select all that apply, or choose 'none' for visual-only output.**
+
+When generating concept prompts in Step 2:
+- If copy elements are selected: include them with layout instructions ("Reserve appropriate visual space ONLY for the selected mandatory copy elements. Follow hierarchical order and ensure each element is legible.")
+- If no copy selected: include "No mandatory copy required. Focus on visual composition, product showcase, and brand codes."
+- Copy direction: "All marketing copy must directly address the viewing AUDIENCE. The copy speaks TO the viewer, not to characters within the scene."
+
 ## Step 2 — Generate 3 Concept Variations
 
 Using the confirmed insights, generate 3 creative concept variations yourself.
@@ -66,9 +83,27 @@ ${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
   --json
 ```
 
+When constructing image generation prompts, ALWAYS include these directives:
+- "The reference image IS the advertisement creative to reimagine. Transform and remix its visual elements directly into a new creative. DO NOT treat the reference as content to display within a new environment (not on a monitor, not as a poster, not on a screen someone is viewing)."
+- "All marketing copy speaks TO the viewer. Never depict copy as text being shown to or viewed by characters in the scene."
+
+Add these to the negative prompts: `reference-ad-shown-as-object-in-scene, recursive-image-embedding, marketing-copy-shown-to-scene-characters`.
+
 **Runtime resolution**: If `bun` is installed, use `bun`. Otherwise use `npx -y bun`.
 
-**Error handling**: If the script fails (rate limit, content policy), wait 5 seconds and retry once. If it still fails, present the error and offer to try a different prompt.
+**Image strength guide:**
+
+| Strength | Effect | Use When |
+|----------|--------|----------|
+| 0.55–0.65 | Close to original | SAFE concepts, minor variations |
+| 0.70–0.80 | Moderate transformation | BOLD concepts, new composition |
+| 0.85–0.95 | Major transformation | EXPERIMENTAL concepts, genre shifts |
+
+**Error handling**:
+- Rate limit (429) or service unavailable (503): wait 5 seconds, retry once
+- Content policy violation: present the error, offer to modify the prompt
+- No image data returned: retry with simplified prompt
+- Other failures: present the error and offer to try a different prompt
 
 ## Step 4 — Review
 

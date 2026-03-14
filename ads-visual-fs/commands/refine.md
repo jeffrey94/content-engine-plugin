@@ -59,17 +59,23 @@ Generate 3 variations by running the script via Bash, with slight prompt variati
 
 ```bash
 ${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
-  --prompt "Refine this marketing ad. Apply ONLY these changes: <confirmed changes>. PRESERVE these elements exactly: <preserve list>. Maintain all other visual elements, colors, typography, and layout." \
+  --prompt "Refine this marketing ad. Apply ONLY these changes: <confirmed changes>. PRESERVE these elements exactly: <preserve list>. Maintain all other visual elements, colors, typography, and layout. DO NOT recreate the ad as an object in a new scene. Apply edits directly to the existing creative." \
   --image "./ads-output/refine/<description-slug>-v1.png" \
   --ref "$1" \
   --json
 ```
 
+Add `reference-ad-shown-as-object-in-scene` to the negative prompts for all refine generation calls.
+
 Repeat for v2 and v3 with slight prompt variations.
 
 **Runtime resolution**: If `bun` is installed, use `bun`. Otherwise use `npx -y bun`.
 
-**Error handling**: If the script fails, wait 5 seconds and retry once. If it still fails, present the error and offer to adjust the prompt.
+**Error handling**:
+- Rate limit (429) or service unavailable (503): wait 5 seconds, retry once
+- Content policy violation: present the error, offer to modify the prompt
+- No image data returned: retry with simplified prompt
+- Other failures: present the error and offer to adjust the prompt
 
 ## Step 5 — Review
 

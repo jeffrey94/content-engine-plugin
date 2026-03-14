@@ -5,7 +5,7 @@ description: >
   resizing, or review. Enforces FS brand colors, typography, tone, logo usage, and
   regulatory compliance. This is a shared compliance capability that enhances all workflows.
 metadata:
-  version: "0.2.0"
+  version: "0.4.0"
 ---
 
 # Funding Societies Brand Compliance

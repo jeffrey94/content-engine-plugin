@@ -1,6 +1,7 @@
 ---
 name: create
 description: Create a new ad from a marketing brief
+argument-hint: [brief-file] [branding-guide] [logo]
 allowed-tools: Read, Bash
 ---
 
@@ -10,7 +11,9 @@ Generate brand-new ad creatives from a marketing brief with Funding Societies br
 
 ## Step 1 — Gather Brief
 
-Prompt the user for campaign details:
+If the user provides file paths (PDFs, docs, images), read them directly to extract campaign details instead of asking questions. If `$1` is a brief document, read it. If `$2` is a branding guide, read it. If `$3` is a logo, use it as reference.
+
+If no files are provided, prompt the user for campaign details:
 
 1. **Product/Service** — What is being advertised? (e.g., SME business loan, invoice financing)
 2. **Campaign Goal** — Awareness, lead generation, retargeting, or product launch?
@@ -68,6 +71,32 @@ Wait for selection.
 
 ## Step 4 — Generate Images
 
+### Prompt Construction
+
+Every image generation prompt MUST include these sections:
+
+1. **Scene Description** — Full composition: background, foreground, subjects, layout
+2. **Brand Constraints** — `Brand colors: Light Gray #F1F1F2, Yellow #FFDE0F, Purple #5203EA, Teal #27E4CD, Blue #2C50FF. Typography: Poppins SemiBold for headings, Inter Regular for body text.`
+3. **Copy Elements** — Exact text to render: headline, support line, CTA button text
+4. **Style Direction** — Mood, photography style, lighting, composition guidance
+5. **Negative Prompts** — Always append: "Do not include gambling, casino, rockets, memes, aggressive lending language, illegible text, distorted faces, or generic stock photo aesthetics."
+
+See `${CLAUDE_PLUGIN_ROOT}/scripts/references/prompt-patterns.md` for reusable prompt templates (product-forward, lifestyle, data-driven) and FS brand color usage guide.
+
+### Aspect Ratio Selection
+
+Match `--ar` to target platform:
+- Instagram Feed → 1:1
+- Instagram Story/Reel, TikTok → 9:16
+- Facebook Feed, LinkedIn Feed → 4:3
+- YouTube Thumbnail, Google Leaderboard → 16:9
+
+### Handoff from Concept-Generation
+
+When the concept-generation skill produces concepts, each includes an "Image Generation Prompt" field. Use that prompt directly as the `--prompt` argument, after appending the brand-compliance prompt injection template. The concept also specifies `aspect_ratio` — pass it through as `--ar`.
+
+### Script Execution
+
 For each selected concept, run the script via Bash:
 
 ```bash
@@ -82,7 +111,7 @@ If user provided a logo image, add `--ref <logo-path> --strength 0.2` so it's us
 
 **Runtime resolution**: If `bun` is installed, use `bun`. Otherwise use `npx -y bun`.
 
-**Error handling**: If the script fails, wait 5 seconds and retry once. If it still fails, present the error and offer to try a different prompt.
+**Error handling**: If the script fails, wait 5 seconds and retry once. If it still fails, present the error and offer to modify the prompt. If a content policy violation occurs, present the error and offer to adjust the prompt language.
 
 ## Step 5 — Review
 

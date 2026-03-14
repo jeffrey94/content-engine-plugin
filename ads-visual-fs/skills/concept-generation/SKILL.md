@@ -5,7 +5,7 @@ description: >
   (SAFE/BOLD/EXPERIMENTAL) for ad campaigns. Produces titles, rationales, and image
   generation prompts. This is a shared creative capability, not a user-facing workflow.
 metadata:
-  version: "0.2.0"
+  version: "0.4.0"
 ---
 
 # Concept Generation
@@ -52,7 +52,7 @@ For each concept, produce:
    - Copy elements to include (headline, CTA, trust signals)
    - Style and mood direction
    - Negative prompts (no gambling, casino, rockets, memes, illegible text)
-4. **Settings** — image_strength matching the concept level (SAFE: 0.55–0.65, BOLD: 0.70–0.80, EXPERIMENTAL: 0.85–0.95), and aspect_ratio from the source image or target platform. The image_strength is passed to the image-editing skill's generate-image.ts script call when a reference image is used (Reimagine). For Create (text-to-image, no reference), image_strength is not applicable.
+4. **Settings** — image_strength matching the concept level (SAFE: 0.55–0.65, BOLD: 0.70–0.80, EXPERIMENTAL: 0.85–0.95), and aspect_ratio from the source image or target platform. The image_strength is passed as `--strength` to the generate-image.ts script when a reference image is used (Reimagine). For Create (text-to-image, no reference), image_strength is not applicable.
 
 ## Prompt Engineering Guidelines
 
@@ -61,3 +61,5 @@ For each concept, produce:
 - Specify color usage: "primary purple #5203EA background, yellow #FFDE0F CTA button"
 - Describe the mood: "confident, professional, empowering"
 - Include negative prompts to avoid: gambling imagery, memes, rockets, aggressive language
+- **Anti-recursive-embedding**: Always include in prompts: "The reference image IS the ad to reimagine. Transform and remix its visual elements directly into a new creative. DO NOT treat the reference as content to display within a scene (not on a monitor, billboard, poster, or screen)."
+- **Copy direction**: All marketing copy must address the viewing audience. Never depict copy as text shown to or viewed by characters within the scene.
