@@ -2,7 +2,7 @@
 name: refine
 description: Refine specific elements of an ad while preserving the rest
 argument-hint: <image-path> [description of changes]
-allowed-tools: Read, mcp__ads-visual_gemini-ads__refine_ad_element
+allowed-tools: Read, Bash
 ---
 
 # /refine
@@ -23,7 +23,7 @@ Wait for the user's response.
 
 ## Step 2 — Analyze Composition
 
-Analyze the image directly for its element composition. Do NOT call any MCP tool for analysis.
+Analyze the image directly for its element composition.
 
 Map all visible elements with approximate positions:
 - Headline (text content, position)
@@ -47,7 +47,7 @@ Map the user's intent to specific elements. Present:
 
 **Elements to preserve:** (list all elements NOT being changed)
 
-Generate an editable Gemini prompt from the proposal. Show it to the user:
+Generate an editable Gemini prompt from the proposal. The prompt should describe the changes to apply and elements to preserve. Show it to the user:
 
 > **Review the change prompt and preservation list. Edit if needed, then confirm.**
 
@@ -55,21 +55,21 @@ Wait for confirmation.
 
 ## Step 4 — Generate Refined Images
 
-Call the MCP tool to generate 3 variations:
+Generate 3 variations by running the script via Bash, with slight prompt variations for diversity:
 
-```
-Tool: mcp__ads-visual_gemini-ads__refine_ad_element
-Args: {
-  image_path: "$1",
-  instructions: "<confirmed changes>",
-  output_path: "./ads-output/refine/<description-slug>-v1.png",
-  preserve_elements: ["<confirmed preservation list>"]
-}
+```bash
+${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
+  --prompt "Refine this marketing ad. Apply ONLY these changes: <confirmed changes>. PRESERVE these elements exactly: <preserve list>. Maintain all other visual elements, colors, typography, and layout." \
+  --image "./ads-output/refine/<description-slug>-v1.png" \
+  --ref "$1" \
+  --json
 ```
 
-Repeat for v2 and v3 with slight prompt variations for diversity.
+Repeat for v2 and v3 with slight prompt variations.
 
-**Error handling**: If the MCP call fails, wait 5 seconds and retry once. If it still fails, present the error and offer to adjust the prompt.
+**Runtime resolution**: If `bun` is installed, use `bun`. Otherwise use `npx -y bun`.
+
+**Error handling**: If the script fails, wait 5 seconds and retry once. If it still fails, present the error and offer to adjust the prompt.
 
 ## Step 5 — Review
 

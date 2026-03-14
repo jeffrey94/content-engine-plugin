@@ -2,7 +2,7 @@
 name: image-editing
 description: >
   Activates when transforming, refining, or resizing an existing image using a reference.
-  Guides MCP tool usage for image-to-image generation, element refinement, and platform
+  Guides script usage for image-to-image generation, element refinement, and platform
   resizing. This is a shared capability, not a user-facing workflow.
 metadata:
   version: "0.2.0"
@@ -14,48 +14,44 @@ Transform, refine, or resize existing ad images. Used by Reimagine, Refine, and 
 
 ## When This Activates
 
-This skill provides guidance when you need to call MCP tools WITH a reference image:
-- `generate_ad_image` with `reference_image_path` (Reimagine)
-- `refine_ad_element` (Refine)
-- `resize_ad_image` (Resize)
+This skill provides guidance when you need to run the `generate-image.ts` script WITH a reference image:
+- Reimagine: `--ref` with `--strength` (image-to-image with concept)
+- Refine: `--ref` with change/preserve instructions in `--prompt`
+- Resize: `--ref` with `--ar` for target platform
 
-## MCP Tools
+## Bash Script Usage
 
 ### For Reimagine (image-to-image with concept)
 
-```
-Tool: mcp__ads-visual_gemini-ads__generate_ad_image
-Args: {
-  prompt: "<concept prompt>",
-  reference_image_path: "<original image>",
-  output_path: "./ads-output/reimagine/<name>.png",
-  image_strength: <0.55-0.95 based on concept level>,
-  aspect_ratio: "<auto-detected from source>"
-}
+```bash
+${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
+  --prompt "<concept prompt>" \
+  --image "./ads-output/reimagine/<name>.png" \
+  --ref "<original image>" \
+  --strength <0.55-0.95 based on concept level> \
+  --ar "<aspect ratio>" \
+  --json
 ```
 
 ### For Refine (targeted element changes)
 
-```
-Tool: mcp__ads-visual_gemini-ads__refine_ad_element
-Args: {
-  image_path: "<source image>",
-  instructions: "<specific changes>",
-  output_path: "./ads-output/refine/<name>.png",
-  preserve_elements: ["logo", "background", ...]
-}
+```bash
+${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
+  --prompt "Refine: <specific changes>. Preserve: <logo, background, ...>" \
+  --image "./ads-output/refine/<name>.png" \
+  --ref "<source image>" \
+  --json
 ```
 
 ### For Resize (platform adaptation)
 
-```
-Tool: mcp__ads-visual_gemini-ads__resize_ad_image
-Args: {
-  image_path: "<source image>",
-  platform: "<platform-key>",
-  output_path: "./ads-output/resize/<platform>.png",
-  composition_notes: "<element positions and hierarchy>"
-}
+```bash
+${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
+  --prompt "Adapt for <platform>. <element positions and hierarchy>" \
+  --image "./ads-output/resize/<platform>.png" \
+  --ref "<source image>" \
+  --ar "<target aspect ratio>" \
+  --json
 ```
 
 ## Image Strength Guide
@@ -68,6 +64,6 @@ Args: {
 
 ## Error Handling
 
-1. If Gemini returns rate limit (429) or service unavailable (503): wait 5 seconds, retry once
+1. If the script returns rate limit (429) or service unavailable (503): wait 5 seconds, retry once
 2. If content policy violation: present the error, offer to modify the prompt
 3. If no image data returned: retry with simplified prompt

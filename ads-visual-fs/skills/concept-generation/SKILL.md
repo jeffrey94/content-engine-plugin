@@ -14,7 +14,7 @@ Generate creative concept variations at three conceptual distance levels. Used b
 
 ## When This Activates
 
-This skill provides domain expertise when you need to generate creative concepts for ad campaigns. You generate these concepts yourself — do NOT call any MCP tool.
+This skill provides domain expertise when you need to generate creative concepts for ad campaigns. You generate these concepts yourself — do NOT call any external tool or script.
 
 ## The Three Levels
 
@@ -52,7 +52,7 @@ For each concept, produce:
    - Copy elements to include (headline, CTA, trust signals)
    - Style and mood direction
    - Negative prompts (no gambling, casino, rockets, memes, illegible text)
-4. **Settings** — image_strength matching the concept level (SAFE: 0.55–0.65, BOLD: 0.70–0.80, EXPERIMENTAL: 0.85–0.95), and aspect_ratio from the source image or target platform. The image_strength is passed to the image-editing skill's `generate_ad_image` call when a reference image is used (Reimagine). For Create (text-to-image, no reference), image_strength is not applicable.
+4. **Settings** — image_strength matching the concept level (SAFE: 0.55–0.65, BOLD: 0.70–0.80, EXPERIMENTAL: 0.85–0.95), and aspect_ratio from the source image or target platform. The image_strength is passed to the image-editing skill's generate-image.ts script call when a reference image is used (Reimagine). For Create (text-to-image, no reference), image_strength is not applicable.
 
 ## Prompt Engineering Guidelines
 

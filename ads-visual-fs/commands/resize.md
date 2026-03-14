@@ -2,7 +2,7 @@
 name: resize
 description: Adapt an ad for different platform formats
 argument-hint: <image-path> [platforms]
-allowed-tools: Read, mcp__ads-visual_gemini-ads__resize_ad_image
+allowed-tools: Read, Bash
 ---
 
 # /resize
@@ -18,7 +18,7 @@ Determine:
 - Key elements and their positions (headline, CTA, logo, product, background)
 - Visual hierarchy and composition notes
 
-Present a brief composition summary.
+**Document composition notes** — record element positions (e.g., "logo top-left, headline center-top, CTA bottom-center") for use in Step 3.
 
 ## Step 2 — Select Platforms
 
@@ -45,23 +45,40 @@ Otherwise, present the platform menu and ask the user to select:
 
 Wait for selection.
 
+## Platform Specs
+
+| Key | Aspect Ratio | Description |
+|-----|-------------|-------------|
+| instagram-feed | 1:1 | Instagram Feed (1080x1080) |
+| instagram-story | 9:16 | Instagram Story (1080x1920) |
+| facebook-feed | 4:3 | Facebook Feed (1200x900) |
+| facebook-story | 9:16 | Facebook Story (1080x1920) |
+| linkedin-feed | 4:3 | LinkedIn Feed (1200x627) |
+| linkedin-story | 9:16 | LinkedIn Story (1080x1920) |
+| tiktok | 9:16 | TikTok (1080x1920) |
+| youtube-thumbnail | 16:9 | YouTube Thumbnail (1280x720) |
+| google-leaderboard | 16:9 | Leaderboard (728x90) |
+| google-rectangle | 4:3 | Medium Rectangle (300x250) |
+| google-skyscraper | 9:16 | Wide Skyscraper (160x600) |
+
 ## Step 3 — Generate Resized Versions
 
-For each selected platform, call the MCP tool with composition context:
+For each selected platform, run the script via Bash with composition context:
 
-```
-Tool: mcp__ads-visual_gemini-ads__resize_ad_image
-Args: {
-  image_path: "$1",
-  platform: "<platform-key>",
-  output_path: "./ads-output/resize/<platform-key>.png",
-  composition_notes: "<element positions and hierarchy from Step 1>"
-}
+```bash
+${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
+  --prompt "Adapt this marketing ad for <platform description>. Maintain all brand elements, copy, and visual hierarchy. Recompose the layout to fit the <ratio> aspect ratio naturally — do not simply crop or stretch. Ensure all text remains legible and the CTA is prominent. Composition: <composition notes from Step 1>" \
+  --image "./ads-output/resize/<platform-key>.png" \
+  --ref "$1" \
+  --ar "<aspect ratio>" \
+  --json
 ```
 
 Process platforms sequentially to avoid rate limits.
 
-**Error handling**: If an MCP call fails, wait 5 seconds and retry once. If it still fails, log the error and continue with remaining platforms.
+**Runtime resolution**: If `bun` is installed, use `bun`. Otherwise use `npx -y bun`.
+
+**Error handling**: If a script call fails, wait 5 seconds and retry once. If it still fails, log the error and continue with remaining platforms.
 
 ## Step 4 — Review
 

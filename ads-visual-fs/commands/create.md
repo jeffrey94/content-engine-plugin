@@ -1,7 +1,7 @@
 ---
 name: create
 description: Create a new ad from a marketing brief
-allowed-tools: Read, mcp__ads-visual_gemini-ads__generate_ad_image
+allowed-tools: Read, Bash
 ---
 
 # /create
@@ -37,7 +37,7 @@ Using the brief and FS brand guidelines, construct:
   - TH: "Registered under SEC Thailand"
   - VN: "Licensed under SBV regulations"
 
-FS Brand colors to use: `#F1F1F2` (Light Gray), `#FFDE0F` (Yellow), `#5203EA` (Purple), `#27E4CD` (Teal), `#2C50FF` (Blue)
+FS Brand colors: `#F1F1F2` (Light Gray), `#FFDE0F` (Yellow), `#5203EA` (Purple), `#27E4CD` (Teal), `#2C50FF` (Blue)
 Fonts: Poppins SemiBold/Light for headings, Inter Regular/Bold for body
 Strapline: "Stronger SMEs, Stronger Societies"
 
@@ -49,7 +49,7 @@ Wait for confirmation.
 
 ## Step 3 — Generate 3 Concept Variations
 
-Generate 3 creative concepts yourself (do NOT call any MCP tool). Use the confirmed brief:
+Generate 3 creative concepts yourself:
 
 ### Level 1 — SAFE
 Clean, proven layout. Product-forward with clear value proposition. Professional photography direction.
@@ -60,7 +60,7 @@ New visual metaphor. Rebuilt composition with a fresh storytelling angle. Produc
 ### Level 3 — EXPERIMENTAL
 Genre-shift. Unexpected visual language. Only product identity and message persist.
 
-For each concept, present: title, rationale, detailed image generation prompt (with FS brand colors and fonts injected).
+For each concept, present: title, rationale, detailed image generation prompt (with FS brand colors and fonts injected, plus negative prompts: no gambling, casino, rockets, memes).
 
 > **Which concepts would you like me to generate? (1, 2, 3, or all)**
 
@@ -68,20 +68,21 @@ Wait for selection.
 
 ## Step 4 — Generate Images
 
-For each selected concept, call:
+For each selected concept, run the script via Bash:
 
+```bash
+${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
+  --prompt "<concept prompt with FS brand colors (#F1F1F2, #FFDE0F, #5203EA, #27E4CD, #2C50FF), Poppins/Inter fonts, and negative prompts>" \
+  --image "./ads-output/create/<campaign-slug>/<level>.png" \
+  --ar "<from target platform>" \
+  --json
 ```
-Tool: mcp__ads-visual_gemini-ads__generate_ad_image
-Args: {
-  prompt: "<concept prompt with FS brand colors (#F1F1F2, #FFDE0F, #5203EA, #27E4CD, #2C50FF), Poppins/Inter fonts, and negative prompts (no gambling, casino, rockets, memes)>",
-  output_path: "./ads-output/create/<campaign-slug>/<level>.png",
-  aspect_ratio: "<from target platform>"
-}
-```
 
-If user provided a logo image, include it as `reference_image_path` with low `image_strength` (0.2) so it's used as a loose reference.
+If user provided a logo image, add `--ref <logo-path> --strength 0.2` so it's used as a loose reference.
 
-**Error handling**: If the MCP call fails, wait 5 seconds and retry once. If it still fails, present the error and offer to try a different prompt.
+**Runtime resolution**: If `bun` is installed, use `bun`. Otherwise use `npx -y bun`.
+
+**Error handling**: If the script fails, wait 5 seconds and retry once. If it still fails, present the error and offer to try a different prompt.
 
 ## Step 5 — Review
 

@@ -2,7 +2,7 @@
 name: image-generation
 description: >
   Activates when generating images from text prompts without a reference image (text-to-image).
-  Guides prompt construction and MCP tool usage for the Create workflow. This is a shared
+  Guides prompt construction and script usage for the Create workflow. This is a shared
   capability, not a user-facing workflow.
 metadata:
   version: "0.2.0"
@@ -14,20 +14,19 @@ Generate ad images from text prompts without a reference image. Used by the Crea
 
 ## When This Activates
 
-This skill provides guidance when you need to call the `generate_ad_image` MCP tool WITHOUT a reference image (pure text-to-image generation).
+This skill provides guidance when you need to run the `generate-image.ts` script WITHOUT a reference image (pure text-to-image generation).
 
-## MCP Tool
+## Bash Script
 
+```bash
+${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
+  --prompt "<detailed prompt>" \
+  --image "./ads-output/create/<campaign>/<name>.png" \
+  --ar "<from target platform>" \
+  --json
 ```
-Tool: mcp__ads-visual_gemini-ads__generate_ad_image
-Args: {
-  prompt: "<detailed prompt>",
-  output_path: "./ads-output/create/<campaign>/<name>.png",
-  aspect_ratio: "<from target platform>"
-}
-```
 
-Note: No `reference_image_path` — this is text-to-image only.
+Note: No `--ref` — this is text-to-image only.
 
 ## Prompt Construction
 
@@ -61,11 +60,11 @@ Match to target platform:
 
 ## Handoff from Concept-Generation
 
-When the concept-generation skill produces concepts, each includes an "Image Generation Prompt" field. Use that prompt directly as the `prompt` argument to the MCP tool, after appending the brand-compliance prompt injection template. The concept also specifies `aspect_ratio` — pass it through to the MCP call.
+When the concept-generation skill produces concepts, each includes an "Image Generation Prompt" field. Use that prompt directly as the `--prompt` argument to the script, after appending the brand-compliance prompt injection template. The concept also specifies `aspect_ratio` — pass it through as `--ar`.
 
 ## Error Handling
 
-If Gemini returns an error:
+If the script returns an error:
 1. Wait 5 seconds
 2. Retry once with the same prompt
 3. If still fails, present the error and offer to modify the prompt

@@ -74,7 +74,7 @@ This skill auto-activates during ANY ad creative workflow. Apply these rules to 
 
 ## Prompt Injection Template
 
-**This template MUST be appended to EVERY prompt passed to `generate_ad_image`, `refine_ad_element`, and `resize_ad_image` MCP tools.** It is not optional — every image generation call should include these constraints:
+**This template MUST be appended to EVERY prompt passed to ALL `generate-image.ts` script calls.** It is not optional — every image generation call should include these constraints:
 
 ```
 Brand colors: Light Gray #F1F1F2, Yellow #FFDE0F, Purple #5203EA, Teal #27E4CD, Blue #2C50FF.

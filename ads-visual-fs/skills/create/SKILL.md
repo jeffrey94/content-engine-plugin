@@ -25,17 +25,24 @@ The key steps are:
 1. **Gather Brief** — Collect: product/service, campaign goal, target audience, key message, target market (SG/MY/ID/TH/VN), target platform, optional logo path.
 2. **Build Copy** — YOU construct marketing copy using FS brand guidelines: H1, support line, CTA, trust signals, regulatory disclaimer. Present for user review and confirmation.
 3. **Generate Concepts** — YOU generate 3 concept variations (SAFE/BOLD/EXPERIMENTAL). Present for user selection.
-4. **Generate Images** — Call `mcp__ads-visual_gemini-ads__generate_ad_image` (text-to-image, no reference) with FS brand constraints in prompt.
+4. **Generate Images** — Run the generate-image.ts script via Bash (text-to-image, no reference) with FS brand constraints in prompt.
+   ```bash
+   ${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
+     --prompt "<detailed prompt with brand constraints>" \
+     --image "./ads-output/create/<campaign>/<name>.png" \
+     --ar "<from target platform>" \
+     --json
+   ```
 5. **Review** — Present outputs. Offer to refine or resize.
 
 ## Important
 
-- YOU do all concept generation and copy writing. The MCP server is ONLY for image generation.
+- YOU do all concept generation and copy writing. Image generation is done via the `generate-image.ts` script executed through Bash.
 - Always inject FS brand colors (#F1F1F2, #FFDE0F, #5203EA, #27E4CD, #2C50FF) and Poppins/Inter fonts.
-- Always include negative prompts in every MCP call: no gambling, casino, rockets, memes, illegible text, aggressive lending.
-- Always append the brand-compliance prompt injection template to all MCP prompts.
+- Always include negative prompts in every script call: no gambling, casino, rockets, memes, illegible text, aggressive lending.
+- Always append the brand-compliance prompt injection template to all image generation prompts.
 - Include market-specific regulatory disclaimer.
-- If user provides a logo image path, include it as `reference_image_path` with `image_strength: 0.2` so Gemini uses it as a loose visual reference without dominating the output.
-- Set `aspect_ratio` from the target platform selected in the brief (e.g., Instagram Feed → `1:1`, Story → `9:16`, LinkedIn → `4:3`).
+- If user provides a logo image path, include it as `--ref` with `--strength 0.2` so Gemini uses it as a loose visual reference without dominating the output.
+- Set `--ar` from the target platform selected in the brief (e.g., Instagram Feed → `1:1`, Story → `9:16`, LinkedIn → `4:3`).
 - User confirmation required at copy review and concept selection steps.
-- If Gemini fails, wait 5s and retry once.
+- If the script fails, wait 5s and retry once.

@@ -1,18 +1,18 @@
-# ads-visual
+# ads-visual-fs
 
 AI-powered ad creative generation plugin for Funding Societies. Reimagine existing ads, refine elements, resize for platforms, and create from briefs — all with FS brand compliance built in.
 
 ## Architecture
 
 ```
-/reimagine  → [marketing-analysis] → [concept-generation] → [image-editing] ←── MCP (Gemini)
-/refine     → [composition-analysis] ─────────────────────→ [image-editing] ←── MCP (Gemini)
-/resize     → [composition-analysis] ─────────────────────→ [image-editing] ←── MCP (Gemini)
-/create     → [concept-generation] ───────────────────────→ [image-generation] ← MCP (Gemini)
+/reimagine  → [marketing-analysis] → [concept-generation] → [generate-image.ts]
+/refine     → [composition-analysis] ─────────────────────→ [generate-image.ts]
+/resize     → [composition-analysis] ─────────────────────→ [generate-image.ts]
+/create     → [concept-generation] ───────────────────────→ [generate-image.ts]
                               ↑ [brand-compliance] applied to ALL ↑
 
 Claude does: analysis, concept generation, brand compliance (native LLM capabilities)
-MCP does:    image generation/editing/resizing only (Gemini image API)
+Script does: image generation via Gemini API (scripts/generate-image.ts)
 ```
 
 ## Components
@@ -50,19 +50,20 @@ Context-activated domain expertise — auto-activates during workflows.
 | image-editing | Image-to-image (with reference) | Reimagine, Refine, Resize |
 | brand-compliance | Any FS ad creative work | All 4 |
 
-### MCP Server (3 tools)
+### Image Generation Script
 
-| Tool | Description |
-|------|-------------|
-| `generate_ad_image` | Generate images (text-to-image or image-to-image) |
-| `resize_ad_image` | Platform-specific resize with recomposition |
-| `refine_ad_element` | Targeted element changes on existing images |
+`scripts/generate-image.ts` — Calls the Gemini API directly via Bash. No MCP server needed.
 
-### Hook
+```bash
+# Text-to-image
+bun scripts/generate-image.ts --prompt "A professional ad..." --image out.png --ar 1:1
 
-| Event | Purpose |
-|-------|---------|
-| PostToolUse | Auto-validate FS brand compliance on generated images |
+# Image-to-image (with reference)
+bun scripts/generate-image.ts --prompt "Adapt this ad..." --image out.png --ref source.png --ar 9:16
+
+# With strength control
+bun scripts/generate-image.ts --prompt "..." --image out.png --ref source.png --strength 0.7
+```
 
 ## Setup
 
@@ -76,15 +77,17 @@ Context-activated domain expertise — auto-activates during workflows.
 export GEMINI_API_KEY="your-api-key-here"
 ```
 
-### 2. Install Dependencies
+### 2. Install Bun (if not already installed)
 
 ```bash
-cd servers && npm install
+curl -fsSL https://bun.sh/install | bash
 ```
+
+Or the script will fall back to `npx -y bun` if bun is not installed.
 
 ### 3. Install the Plugin
 
-Copy the plugin directory or install the `.plugin` file through Cowork.
+Install from GitHub: `jeffrey94/jeffrey-skills` → `ads-visual-fs`
 
 ## Usage
 

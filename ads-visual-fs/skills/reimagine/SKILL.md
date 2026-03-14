@@ -25,13 +25,22 @@ The key steps are:
 
 1. **Analyze** — Read the user's image. YOU analyze it directly (multimodal) for marketing insights: product, message, audience, brand codes, mandatory copy. Present and get user confirmation.
 2. **Generate Concepts** — YOU generate 3 concept variations (SAFE/BOLD/EXPERIMENTAL) with titles, rationales, and image prompts. Get user selection.
-3. **Generate Images** — Call `mcp__ads-visual_gemini-ads__generate_ad_image` with the original as `reference_image_path`. Set `image_strength` per concept level: SAFE 0.55–0.65, BOLD 0.70–0.80, EXPERIMENTAL 0.85–0.95.
+3. **Generate Images** — Run the generate-image.ts script via Bash with the original as `--ref`. Set `--strength` per concept level: SAFE 0.55–0.65, BOLD 0.70–0.80, EXPERIMENTAL 0.85–0.95.
+   ```bash
+   ${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
+     --prompt "<concept prompt>" \
+     --image "./ads-output/reimagine/<name>.png" \
+     --ref "<original image>" \
+     --strength <0.55-0.95> \
+     --ar "<aspect ratio>" \
+     --json
+   ```
 4. **Review** — Present outputs. Offer to refine or resize.
 
 ## Important
 
-- YOU do all analysis and concept generation. The MCP server is ONLY for image generation.
+- YOU do all analysis and concept generation. Image generation is done via the `generate-image.ts` script executed through Bash.
 - Always inject FS brand colors (#F1F1F2, #FFDE0F, #5203EA, #27E4CD, #2C50FF) and Poppins/Inter fonts into prompts.
-- Always append the brand-compliance prompt injection template to all MCP prompts.
+- Always append the brand-compliance prompt injection template to all image generation prompts.
 - Include user confirmation gates before proceeding to the next step.
 - If Gemini fails, wait 5s and retry once.

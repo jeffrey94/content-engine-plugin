@@ -23,14 +23,22 @@ Follow the exact same workflow as the `/resize` command. Read the command at `..
 
 The key steps are:
 
-1. **Analyze** — Read image, determine aspect ratio and composition. YOU analyze directly. **Document composition notes** — record element positions (e.g., "logo top-left, headline center-top, CTA bottom-center, product image right-third") and visual hierarchy. You will pass these notes to the MCP tool in Step 3.
+1. **Analyze** — Read image, determine aspect ratio and composition. YOU analyze directly. **Document composition notes** — record element positions (e.g., "logo top-left, headline center-top, CTA bottom-center, product image right-third") and visual hierarchy. You will pass these notes to the script in Step 3.
 2. **Select Platforms** — Parse from user message or present menu. Available: Instagram Feed (1:1), Instagram Story/Reel (9:16), Facebook Feed (4:3), Facebook Story (9:16), LinkedIn Feed (4:3), LinkedIn Story (9:16), TikTok (9:16), YouTube Thumbnail (16:9), Google Display Leaderboard (16:9), Google Display Rectangle (4:3), Google Display Skyscraper (9:16).
-3. **Generate** — Call `mcp__ads-visual_gemini-ads__resize_ad_image` for each platform, passing the `composition_notes` from Step 1 as a string describing element positions and hierarchy (e.g., `"Logo top-left 10%, headline center-top in safe zone, CTA bottom-center, product photo right third, background gradient purple→blue"`).
+3. **Generate** — Run the generate-image.ts script via Bash for each platform, passing the composition notes from Step 1 in the `--prompt` and the target aspect ratio via `--ar`.
+   ```bash
+   ${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
+     --prompt "Adapt for <platform>. <composition notes: element positions and hierarchy>" \
+     --image "./ads-output/resize/<platform>.png" \
+     --ref "<source image>" \
+     --ar "<target aspect ratio>" \
+     --json
+   ```
 4. **Review** — List all files with specs. Offer to regenerate or refine specific versions.
 
 ## Important
 
-- YOU do all composition analysis. The MCP server is ONLY for image resizing.
+- YOU do all composition analysis. Image resizing is done via the `generate-image.ts` script executed through Bash.
 - Process platforms sequentially to avoid rate limits.
-- If Gemini fails, wait 5s, retry once, then continue with remaining platforms.
+- If the script fails, wait 5s, retry once, then continue with remaining platforms.
 - See `../image-editing/references/platform-specs.md` for detailed dimensions, safe zones, and platform key mapping.

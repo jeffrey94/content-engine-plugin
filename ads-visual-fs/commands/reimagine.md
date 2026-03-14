@@ -2,7 +2,7 @@
 name: reimagine
 description: Reimagine an existing ad with 3 concept variations (SAFE/BOLD/EXPERIMENTAL)
 argument-hint: <image-path>
-allowed-tools: Read, mcp__ads-visual_gemini-ads__generate_ad_image
+allowed-tools: Read, Bash
 ---
 
 # /reimagine
@@ -11,7 +11,7 @@ Transform an existing ad creative into fresh concept variations at three concept
 
 ## Step 1 — Analyze the Source Ad
 
-Read the image at `$1`. You are multimodal — analyze it directly. Do NOT call any MCP tool for analysis.
+Read the image at `$1`. You are multimodal — analyze it directly.
 
 Perform marketing inference on the image. For each insight below, provide a label, rationale, confidence score (0–1), and evidence tags:
 
@@ -29,7 +29,7 @@ Wait for user confirmation. Do NOT proceed until the user confirms.
 
 ## Step 2 — Generate 3 Concept Variations
 
-Using the confirmed insights, generate 3 creative concept variations. Do NOT call any MCP tool — generate these yourself.
+Using the confirmed insights, generate 3 creative concept variations yourself.
 
 ### Level 1 — SAFE (REFRAME)
 Refined execution of the proven approach. Minimal conceptual distance. Keep the same visual language but elevate the execution quality. Image strength: **0.55–0.65** (close to original).
@@ -54,20 +54,21 @@ Wait for user selection.
 
 ## Step 3 — Generate Images
 
-For each selected concept, call the MCP tool:
+For each selected concept, run the generation script via Bash:
 
-```
-Tool: mcp__ads-visual_gemini-ads__generate_ad_image
-Args: {
-  prompt: "<concept prompt with FS brand constraints>",
-  reference_image_path: "$1",
-  output_path: "./ads-output/reimagine/<concept-title-slug>.png",
-  image_strength: <from concept settings>,
-  aspect_ratio: "<auto-detected from source>"
-}
+```bash
+${BUN_X} ${CLAUDE_PLUGIN_ROOT}/scripts/generate-image.ts \
+  --prompt "<concept prompt with FS brand constraints>" \
+  --image "./ads-output/reimagine/<concept-title-slug>.png" \
+  --ref "$1" \
+  --strength <from concept settings> \
+  --ar "<auto-detected from source>" \
+  --json
 ```
 
-**Error handling**: If the MCP call fails (rate limit, content policy), wait 5 seconds and retry once. If it still fails, present the error and offer to try a different prompt.
+**Runtime resolution**: If `bun` is installed, use `bun`. Otherwise use `npx -y bun`.
+
+**Error handling**: If the script fails (rate limit, content policy), wait 5 seconds and retry once. If it still fails, present the error and offer to try a different prompt.
 
 ## Step 4 — Review
 
