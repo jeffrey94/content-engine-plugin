@@ -114,7 +114,7 @@ server.tool(
     }
 
     const response = await callGeminiWithRetry(
-      "gemini-2.0-flash-exp",
+      "gemini-2.5-flash",
       [{ role: "user", parts }],
       config
     );
@@ -187,7 +187,7 @@ server.tool(
     const prompt = `Adapt this marketing ad creative for ${spec.desc}. Maintain all brand elements, copy, and visual hierarchy. Recompose the layout to fit the ${spec.ratio} aspect ratio naturally — do not simply crop or stretch. Ensure all text remains legible and the CTA is prominent. Keep the same color palette and brand identity.${compositionGuidance}`;
 
     const response = await callGeminiWithRetry(
-      "gemini-2.0-flash-exp",
+      "gemini-2.5-flash",
       [
         {
           role: "user",
@@ -252,7 +252,7 @@ Requested changes: ${instructions}${preserveList}
 Generate a refined version of this ad with the specified changes applied. Maintain all other visual elements, colors, typography, and layout as closely as possible.`;
 
     const response = await callGeminiWithRetry(
-      "gemini-2.0-flash-exp",
+      "gemini-2.5-flash",
       [
         {
           role: "user",
